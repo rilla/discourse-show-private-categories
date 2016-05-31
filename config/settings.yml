@@ -1,0 +1,4 @@
+plugins:
+  show_private_categories:
+    default: true
+    client: true
