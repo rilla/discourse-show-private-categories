@@ -7,4 +7,4 @@ en:
       request_access_button: "Request access"
       message:
         subject: "Requesting access to {{name}}"
-        body: "Hey there!\n\n I'm writing to request access to {{name}}, I'm super interested in it.\n\nCheers!"
+        body: "Hey there!\n\n I'm writing to request access to {{name}}.\n\nThanks, cheers!"

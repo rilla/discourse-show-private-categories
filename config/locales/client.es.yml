@@ -1,0 +1,10 @@
+es:
+  js:
+    private_categories:
+      this_category_is_private: "{{name}} es sólo para miembros"
+      you_need_to_sign_in: "Para solicitar acceso, primero tienes que iniciar sesión"
+      you_need_to_request_access: "Tienes que solicitar acceso para unirte"
+      request_access_button: "Solicitar acceso"
+      message:
+        subject: "Solicitud de acceso a {{name}}"
+        body: "Hola!\n\n Me gustaría unirme a {{name}}.\n\nGracias, saludos!"
