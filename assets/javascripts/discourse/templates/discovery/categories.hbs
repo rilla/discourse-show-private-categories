@@ -36,16 +36,16 @@
             {{#if c.is_private}}
               <td>
                 <div class="alert alert-info">
-                  <h4>{{i18n 'private_categories.this_category_is_private' name=c.name}}</h4>
+                  <h4>{{replace-emoji (i18n 'private_categories.this_category_is_private' name=c.name)}}</h4>
                   {{#if currentUser}}
-                    <p>{{i18n 'private_categories.you_need_to_request_access'}}</p>
-                    <button class='btn btn-default' {{action 'createNewMessageViaParams' c.slug (i18n 'private_categories.message.subject' name=c.name) (i18n 'private_categories.message.body' name=c.name)}}>
+                    <p>{{replace-emoji (i18n 'private_categories.you_need_to_request_access')}}</p>
+                    <button class='btn btn-small btn-primary' {{action 'createNewMessageViaParams' c.slug (i18n 'private_categories.message.subject' name=c.name) (i18n 'private_categories.message.body' name=c.name)}}>
                       <i class='fa fa-user-plus'></i>
                       {{i18n 'private_categories.request_access_button'}}<br/>
                     </button>
                   {{else}}
-                    <p>{{i18n 'private_categories.you_need_to_sign_in'}}</p>
-                    {{d-button action="showLogin" class="btn-small login-button" icon="user" label="log_in"}}
+                    <p>{{replace-emoji (i18n 'private_categories.you_need_to_sign_in')}}</p>
+                    {{d-button action="showLogin" class="btn-small btn-primary login-button" icon="user" label="log_in"}}
                   {{/if}}
                 </div>
               </td>
