@@ -1,0 +1,77 @@
+{{#if model.categories}}
+  {{#discovery-categories refresh="refresh"}}
+    <table class='topic-list categories'>
+      <thead>
+        <tr>
+          <th class='category'>{{i18n 'categories.category'}}</th>
+          <th class='latest'>{{i18n 'categories.latest'}}</th>
+          <th class='stats topics'>{{i18n 'categories.topics'}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model.categories as |c|}}
+          <tr data-category_id='{{unbound c.id}}' class="{{if c.description_excerpt 'has-description' 'no-description'}} {{if c.logo_url 'has-logo' 'no-logo'}}">
+            <td class='category' style={{border-color c.color}}>
+              <div>
+                {{category-title-link category=c}}
+                {{category-unread category=c}}
+                {{#if c.logo_url}}
+                  {{category-logo-link category=c}}
+                {{/if}}
+
+                <div class="category-description">
+                  {{{c.description_excerpt}}}
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              {{#if c.subcategories}}
+                <div class='subcategories'>
+                  {{#each c.subcategories as |s|}}
+                    {{category-link s hideParent="true"}}
+                    {{category-unread category=s}}
+                  {{/each}}
+                </div>
+              {{/if}}
+            </td>
+            {{#if c.is_private}}
+              <td>
+                <div class="alert alert-info">
+                  <h4>{{i18n 'private_categories.this_category_is_private' name=c.name}}</h4>
+                  {{#if currentUser}}
+                    <p>{{i18n 'private_categories.you_need_to_request_access'}}</p>
+                    <button class='btn btn-default' {{action 'createNewMessageViaParams' c.slug (i18n 'private_categories.message.subject' name=c.name) (i18n 'private_categories.message.body' name=c.name)}}>
+                      <i class='fa fa-user-plus'></i>
+                      {{i18n 'private_categories.request_access_button'}}<br/>
+                    </button>
+                  {{else}}
+                    <p>{{i18n 'private_categories.you_need_to_sign_in'}}</p>
+                    {{d-button action="showLogin" class="btn-small login-button" icon="user" label="log_in"}}
+                  {{/if}}
+                </div>
+              </td>
+            {{else}}
+              <td class="{{if c.archived 'archived'}} latest">
+                {{#each c.featuredTopics as |f|}}
+                  {{featured-topic topic=f latestTopicOnly=latestTopicOnly action="showTopicEntrance"}}
+                {{/each}}
+              </td>
+            {{/if}}
+            <td class='stats' title={{c.topicStatsTitle}}>
+              <table class="categoryStats">
+                <tbody>
+                {{#each c.topicCountStats as |s|}}
+                  <tr>
+                    <td class="value">{{s.value}}</td>
+                    <td class="unit"> / {{s.unit}}</td>
+                  </tr>
+                {{/each}}
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/discovery-categories}}
+  <footer class='topic-list-bottom'></footer>
+{{/if}}

@@ -1,0 +1,10 @@
+en:
+  js:
+    private_categories:
+      this_category_is_private: "{{name}} is private."
+      you_need_to_sign_in: "To request access, first you need to sign in."
+      you_need_to_request_access: "You need to request access to join."
+      request_access_button: "Request access"
+      message:
+        subject: "Requesting access to {{name}}"
+        body: "Hey there!\n\n I'm writing to request access to {{name}}, I'm super interested in it.\n\nCheers!"
